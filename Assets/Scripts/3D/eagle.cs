@@ -28,11 +28,11 @@ public class eagle : MonoBehaviour
 
         float PosX = Input.GetAxisRaw("Horizontal");
         float PosY = Input.GetAxisRaw("Vertical");
-        transform.Translate(PosX / 50, PosY / 50, 0);
+        transform.Translate(PosX / 10, PosY / 10, 0);
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            transform.Translate(PosX / 50, PosY / 50, forward* movementSpeed * Time.deltaTime);
+            transform.Translate(PosX , PosY , forward* movementSpeed * Time.deltaTime);
         }
 
         //transform.Rotate(xAngle, yAngle, zAngle, Space.Self); //以自身為軸心旋轉
