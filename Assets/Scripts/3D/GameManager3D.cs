@@ -1,29 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
-public class GameManager3D : MonoBehaviour
+namespace DinosaurGoogle
 {
-    public float startPosTime;
-    public float endPosTime;
-    public float movementSpeed;
-    public GameObject enemy;
-    public GameObject enemySpawnPos;
-    float timer;
-    // Start is called before the first frame update
-    void Start()
+    /// <summary>
+    /// 遊戲管理器
+    /// </summary>
+    public class GameManager3D : MonoBehaviour
     {
-        
-    }
+        public Transform[] spawnPoint;
+        public float spawnTime = 2f;
+        public GameObject[] enemy;
 
-    // Update is called once per frame
-    void Update()
-    {
-        timer += Time.deltaTime;
-        if (timer > endPosTime)
+        private void Start()
         {
-            Instantiate(enemy,enemySpawnPos.transform);
-            timer = 0;
+            InvokeRepeating("SpawnEnemy", spawnTime, spawnTime);
+        }
+
+        private void Update()
+        {
+            SpawnObject();
+        }
+
+        void SpawnObject()
+        {
+            int spawnEnemy = Random.Range(0, spawnPoint.Length);
+            int enemyType = Random.Range(0, enemy.Length);
+            Instantiate(enemy[enemyType], spawnPoint[spawnEnemy].position, spawnPoint[spawnEnemy].rotation);
         }
     }
 }

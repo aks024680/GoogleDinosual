@@ -6,21 +6,22 @@ public class eagle : MonoBehaviour
 {
     float movementSpeed = 20;
     public Transform goal;
-    public float xAngle;
-    public float yAngle;
-    public float zAngle;
-    public float forward = 100;
-    public float currentPos;
-    public CharacterController cc;
+    Rigidbody rb;
+    public float forward = 10;
+   
+    float timer;
     // Start is called before the first frame update
     void Start()
     {
-        cc = gameObject.GetComponent<CharacterController>();
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        timer += Time.deltaTime;
+        rb.velocity += Vector3.forward * -0.1f;
         //transform.position = new Vector3(0,0,0);
         //transform.rotation = new Vector3(xAngle,yAngle,ZAngel,Space.Self);
         //float PosX = Input.GetAxisRaw("Horizontal");
@@ -28,12 +29,16 @@ public class eagle : MonoBehaviour
 
         float PosX = Input.GetAxisRaw("Horizontal");
         float PosY = Input.GetAxisRaw("Vertical");
-        transform.Translate(PosX / 10, PosY / 10, 0);
-
-        if (Input.GetKeyDown(KeyCode.Space))
+        if(transform.position.x < 8 )
         {
-            transform.Translate(PosX , PosY , forward* movementSpeed * Time.deltaTime);
+            bool v = rb.velocity.x == 8;
         }
+        if (transform.positions.x < -11)
+        {
+            bool v = rb.velocity.x == -11;
+        }
+
+
 
         //transform.Rotate(xAngle, yAngle, zAngle, Space.Self); //以自身為軸心旋轉
     }
