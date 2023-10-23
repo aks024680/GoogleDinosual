@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class eagle : MonoBehaviour
 {
-    float movementSpeed = 20;
+    
     public Transform goal;
-    Rigidbody rb;
+    
     public float forward = 10;
-   
+    Rigidbody rb;
+    public float maxValue = 8, minValue = -11;
+
     float timer;
     // Start is called before the first frame update
     void Start()
@@ -21,7 +23,7 @@ public class eagle : MonoBehaviour
     {
 
         timer += Time.deltaTime;
-        rb.velocity += Vector3.forward * -0.1f;
+        transform.position += Vector3.forward * -0.1f;
         //transform.position = new Vector3(0,0,0);
         //transform.rotation = new Vector3(xAngle,yAngle,ZAngel,Space.Self);
         //float PosX = Input.GetAxisRaw("Horizontal");
@@ -29,14 +31,11 @@ public class eagle : MonoBehaviour
 
         float PosX = Input.GetAxisRaw("Horizontal");
         float PosY = Input.GetAxisRaw("Vertical");
-        if(transform.position.x < 8 )
+        if(transform.position.x > 8 && transform.position.x < -11)
         {
-            bool v = rb.velocity.x == 8;
+            rb.velocity.x = Mathf.Clamp(PosX, minValue, maxValue);
         }
-        if (transform.positions.x < -11)
-        {
-            bool v = rb.velocity.x == -11;
-        }
+        
 
 
 
