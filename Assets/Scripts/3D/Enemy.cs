@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
+using UnityEngine.PlayerLoop;
+
 namespace DinosaurGoogle
 {
-    /// <summary>
-    /// 遊戲管理器
-    /// </summary>
-    public class GameManager3D : MonoBehaviour
+    //敵人控制器
+    public class Enemy : MonoBehaviour
     {
         public Transform[] spawnPoint;
         public float spawnTime = 2f;
@@ -28,3 +28,4 @@ namespace DinosaurGoogle
         }
     }
 }
+
