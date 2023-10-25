@@ -23774,7 +23774,7 @@ MonoBehaviour:
   - {fileID: 1906399885}
   - {fileID: 292895629}
   - {fileID: 1296992931}
-  spawnTime: 10
+  spawnTime: 2
   enemy:
   - {fileID: 1325429586}
 --- !u!54 &1325429592
