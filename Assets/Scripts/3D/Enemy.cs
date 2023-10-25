@@ -13,7 +13,7 @@ namespace DinosaurGoogle
         private void Awake()
         {
             
-            InvokeRepeating("Enemy", spawnTime, 1);
+            InvokeRepeating("SpawnObject", spawnTime, 5f);
         }
 
         private void Start()
@@ -23,7 +23,7 @@ namespace DinosaurGoogle
 
         private void Update()
         {
-            SpawnObject();
+            
         }
 
         void SpawnObject()
