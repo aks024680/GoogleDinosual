@@ -10,9 +10,15 @@ namespace DinosaurGoogle
         public float spawnTime = 2f;
         public GameObject[] enemy;
 
+        private void Awake()
+        {
+            
+            InvokeRepeating("Enemy", spawnTime, 1);
+        }
+
         private void Start()
         {
-            InvokeRepeating("SpawnEnemy", spawnTime, spawnTime);
+         
         }
 
         private void Update()
