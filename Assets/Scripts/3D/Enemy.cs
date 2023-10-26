@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditorInternal.Profiling.Memory.Experimental.FileFormat;
+using UnityEngine;
 using UnityEngine.PlayerLoop;
 
 namespace DinosaurGoogle
@@ -9,29 +10,32 @@ namespace DinosaurGoogle
         public Transform[] spawnPoint;
         public float spawnTime = 2f;
         public GameObject[] enemy;
+        float timer;
 
         private void Awake()
         {
-            
-            InvokeRepeating("SpawnObject", spawnTime, 3f);
+            //InvokeRepeating("Timer", 2f, 1f);
+            InvokeRepeating("SpawnObject", spawnTime, 0.5f);
         }
-
-        private void Start()
-        {
-         
-        }
-
         private void Update()
         {
-            
+            timer += Time.deltaTime;
         }
-
-        void SpawnObject()
+        public void SpawnObject()
         {
+
             int spawnEnemy = Random.Range(0, spawnPoint.Length);
             int enemyType = Random.Range(0, enemy.Length);
-            Instantiate(enemy[enemyType], spawnPoint[spawnEnemy].position, spawnPoint[spawnEnemy].rotation);
+            Instantiate(enemy[enemyType], spawnPoint[spawnEnemy].position, Quaternion.identity);
         }
+        /*private void Timer()
+        {
+            Debug.Log("此次執行的時間為:" + Time.deltaTime);
+            if(Time.deltaTime >= 8)
+            {
+                CancelInvoke();
+            }
+        }*/
     }
 }
 

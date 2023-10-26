@@ -1,28 +1,36 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
+namespace DinosaurGoogle
+{
+    /// <summary>
+    /// 玩家控制器
+    /// </summary>
 public class eagle : MonoBehaviour
 {
+        
+
     
-    public Transform goal;
     
     public float forward = 10;
     Rigidbody rb;
     public float maxValue = 8, minValue = -11;
 
     float timer;
-    // Start is called before the first frame update
-    void Start()
-    {
-        rb = GetComponent<Rigidbody>();
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-       
+        private void Start()
+        {
+            rb = GetComponent<Rigidbody>();
+            
+        }
+        private void Update()
+        {
+            MoveRange();
+            
+        }
+        
+        void MoveRange()
+        {
         transform.position += Vector3.forward * -0.1f;
         //transform.position = new Vector3(0,0,0);
         //transform.rotation = new Vector3(xAngle,yAngle,ZAngel,Space.Self);
@@ -31,16 +39,17 @@ public class eagle : MonoBehaviour
 
         float PosX = Input.GetAxisRaw("Horizontal");
         float PosY = Input.GetAxisRaw("Vertical");
-       
-        
+
+
         Vector3 point = transform.position;
-        point.x = Mathf.Clamp(point.x,-11,8);
-        point.y = Mathf.Clamp(point.y,3,22);
+        point.x = Mathf.Clamp(point.x, -11, 8);
+        point.y = Mathf.Clamp(point.y, 3, 22);
         transform.position = point;
         Move();
 
         //transform.Rotate(xAngle, yAngle, zAngle, Space.Self); //以自身為軸心旋轉
     }
+   
     private void Move()
     {
         //向上运动——W
@@ -74,3 +83,5 @@ public class eagle : MonoBehaviour
     }
 
 }
+}
+
