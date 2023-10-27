@@ -1,18 +1,34 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Buff : MonoBehaviour
+namespace DinosaurGoogle
 {
-    // Start is called before the first frame update
-    void Start()
+/// <summary>
+/// Buff技能控制器
+/// </summary>
+    public class Buff : MonoBehaviour
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public Transform[] spawnPoint;
+        public float spawnTime = 2f;
+        public GameObject[] buff;
+        float timer;
+
+        private void Awake()
+        {
+            //InvokeRepeating("Timer", 2f, 1f);
+            InvokeRepeating("SpawnBuff", spawnTime, 0.5f);
+        }
+        private void Update()
+        {
+            timer += Time.deltaTime;
+        }
+        public void SpawnBuff()
+        {
+
+            int spawnBuff = Random.Range(0, spawnPoint.Length);
+            int buffType = Random.Range(0, buff.Length);
+            Instantiate(buff[buffType], spawnPoint[spawnBuff].position, Quaternion.identity);
+        }
     }
 }
+
