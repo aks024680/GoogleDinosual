@@ -8,14 +8,14 @@ namespace DinosaurGoogle
     public class Enemy : MonoBehaviour
     {
         public Transform[] spawnPoint;
-        public float spawnTime = 2f;
+        public float spawnTime = 1f;
         public GameObject[] enemy;
         float timer;
 
         private void Awake()
         {
             //InvokeRepeating("Timer", 2f, 1f);
-            InvokeRepeating("SpawnObject", spawnTime, 0.5f);
+            InvokeRepeating("SpawnObject", spawnTime, 30f);
         }
         private void Update()
         {
