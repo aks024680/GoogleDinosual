@@ -11,7 +11,7 @@ namespace DinosaurGoogle
         private void Destroythis()
         {
 
-            Destroy(gameObject, 10f);
+            Destroy(gameObject, 5f);
         }
     }
 }

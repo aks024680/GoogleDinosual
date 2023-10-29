@@ -1,33 +1,40 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace DinosaurGoogle
 {
 /// <summary>
-/// Buff�ޯ౱�
+/// Buff技能控制器
 /// </summary>
     public class Buff : MonoBehaviour
     {
 
-        public Transform[] spawnPoint;
-        public float spawnTime = 2f;
-        public GameObject[] buff;
-        float timer;
+        public GameObject objectToSpawn;
+        public float spawnInterval = 2.0f;
 
-        private void Awake()
+        void Start()
         {
-            //InvokeRepeating("Timer", 2f, 1f);
-            InvokeRepeating("SpawnBuff", spawnTime, 0.5f);
+            // 使用InvokeRepeating方法，每隔一段时间生成一个物体
+            InvokeRepeating("SpawnObject", 0.0f, spawnInterval);
         }
-        private void Update()
-        {
-            timer += Time.deltaTime;
-        }
-        public void SpawnBuff()
-        {
 
-            int spawnBuff = Random.Range(0, spawnPoint.Length);
-            int buffType = Random.Range(0, buff.Length);
-            Instantiate(buff[buffType], spawnPoint[spawnBuff].position, Quaternion.identity);
+        void SpawnObject()
+        {
+            // 生成物体
+            Vector3 spawnPosition = new Vector3(Random.Range(-9, 6), Random.Range(3,12), Random.Range(-30, -280)); // 修改为你想要生成的位置
+            GameObject newObj = Instantiate(objectToSpawn, spawnPosition, Quaternion.identity);
+
+            // 检查新生成的物体是否与现有物体重叠
+            Collider[] colliders = Physics.OverlapSphere(newObj.transform.position, 1.0f); // 假定半径为1.0
+
+            foreach (Collider collider in colliders)
+            {
+                if (collider.gameObject != newObj)
+                {
+                    // 如果有重叠的物体，删除它
+                    Destroy(newObj);
+                    return;
+                }
+            }
         }
     }
 }

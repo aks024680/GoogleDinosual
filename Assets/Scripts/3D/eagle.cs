@@ -43,7 +43,7 @@ public class eagle : MonoBehaviour
 
         Vector3 point = transform.position;
         point.x = Mathf.Clamp(point.x, -11, 8);
-        point.y = Mathf.Clamp(point.y, 3, 22);
+        point.y = Mathf.Clamp(point.y, 3, 12);
         transform.position = point;
         Move();
 

@@ -15,7 +15,7 @@ namespace DinosaurGoogle
         private void Awake()
         {
             //InvokeRepeating("Timer", 2f, 1f);
-            InvokeRepeating("SpawnObject", spawnTime, 30f);
+            InvokeRepeating("SpawnObject", spawnTime, 3f);
         }
         private void Update()
         {
@@ -36,6 +36,17 @@ namespace DinosaurGoogle
                 CancelInvoke();
             }
         }*/
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                GameManager gameManager = FindObjectOfType<GameManager>();
+                if (gameManager != null)
+                {
+                    gameManager.GameOver();
+                }
+            }
+        }
     }
 }
 
