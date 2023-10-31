@@ -1,6 +1,6 @@
-﻿using UnityEditorInternal.Profiling.Memory.Experimental.FileFormat;
+﻿
 using UnityEngine;
-using UnityEngine.PlayerLoop;
+
 
 namespace DinosaurGoogle
 {
@@ -36,18 +36,7 @@ namespace DinosaurGoogle
                 CancelInvoke();
             }
         }*/
-        private void OnCollisionEnter(Collision collision)
-        {
-            if (collision.gameObject.CompareTag("Player"))
-            {
-                GameManager gameManager = FindObjectOfType<GameManager>();
-                if (gameManager != null)
-                {
-                    gameManager.GameOver();
-                    print("123");
-                }
-            }
-        }
+       
     }
 }
 
