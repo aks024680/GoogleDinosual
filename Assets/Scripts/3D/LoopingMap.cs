@@ -1,11 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace DinosaurGoogle
 {
-
-
     public class LoopingMap : MonoBehaviour
     {
         public float scrollSpeed = 500.0f;
