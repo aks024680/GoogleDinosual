@@ -15,7 +15,7 @@ namespace DinosaurGoogle
                 if (gameManager != null)
                 {
                     gameManager.GameOver();
-                    print("123");
+                   
                 }
             }
         }
